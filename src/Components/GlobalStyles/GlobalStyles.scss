@@ -2,11 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root{
+    --primary:  rgba(254, 44, 85, 1.0);
+    --white: #fff;
     --black: #000;
     --text-collor: #333;
     //Default Layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
+    --default-layout-horizontal-spacer: 24px;
     
 }
 

@@ -1,9 +1,10 @@
 .wrapper{
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    
+    // align-items: center;
     text-align: center;
     justify-content: center;
-    // flex-direction: row;
     min-width: 100px;
     border-radius: 4px;
     padding: 9px 16px;
@@ -51,12 +52,20 @@
     }
 
 }
-.leftIcon + .title, .title + .rightIcon{
+.Icon + .title, .title + .Icon{
     margin-left: 8px;
 } 
+.Icon{
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
 .text{
     &:hover{text-decoration: underline;}
 }
+
+
+
 // small 
 .small{
     min-width: 8.8rem;
