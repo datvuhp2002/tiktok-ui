@@ -98,10 +98,26 @@
 
 .actions{
     display: flex;
+    .actions-btn{
+        background-color: transparent;
+        font-size: 2.2rem;
+        color: rgba(22, 24, 35, 1.0);
+
+    }
+    .User_Avatar{
+        // margin-left: 24px;
+        position: relative;
+        width: 3.3rem;
+        height: 3.3rem;
+        background: center no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-left: 15px;
+        cursor: pointer;
+    }
     .menu-btn{
         font-size: 2rem;
-        // width: 20px;
-        // height: 20px;
         margin-left: 16px;
         position: relative;
         cursor: pointer;
@@ -109,6 +125,4 @@
         padding: 0 4px;
         background-color: transparent;
     }
-
-    
 }

@@ -12,11 +12,20 @@ import {
   faEarthAsia,
   faKeyboard,
   faQuestion,
+  faCloudArrowUp,
+  faMessage,
+  faBell,
+  faUser,
+  faCoins,
+  faGear,
+  faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { Wrapper as PopperWrapper } from "../../Popper";
-import Tippy from "@tippyjs/react/headless";
 import AccountItem from "../AccountItem";
 import Menu from "../../Popper/MenuItem";
+import HeadLess from "@tippyjs/react/headless";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 const cx = classNames.bind(styles);
 
@@ -43,9 +52,35 @@ const Menu_Items = [
   },
   { icon: <FontAwesomeIcon icon={faKeyboard} />, title: "Keybroad shortcuts" },
 ];
+const userMenu = [
+  {
+    icon: <FontAwesomeIcon icon={faUser} />,
+    title: "View Profile",
+    to: "/profile",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCoins} />,
+    title: "Get Coins",
+    to: "/getCoins",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faGear} />,
+    title: "Setting",
+    to: "/Setting",
+  },
+  ...Menu_Items,
+  {
+    icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+    title: "Log Out",
+    to: "/Logout",
+    separate: true,
+  },
+];
 
 export default function Header() {
   const [searchResult, setSearchResult] = useState([]);
+  let CurrentUser = true;
+
   const handleMenuChange = (menuItem) => {
     switch (menuItem.key) {
       case "language":
@@ -60,7 +95,7 @@ export default function Header() {
         <div className={cx("logo")}>
           <img src={images.logo} alt="Tiktok" />
         </div>
-        <Tippy
+        <HeadLess
           visible={searchResult.length > 0}
           interactive
           render={(attrs) => (
@@ -88,15 +123,38 @@ export default function Header() {
               {/* search */}
             </button>
           </div>
-        </Tippy>
+        </HeadLess>
 
         <div className={cx("actions")}>
-          <Button text>Register</Button>
-          <Button primary>Login</Button>
-          <Menu items={Menu_Items} onChange={handleMenuChange}>
-            <button className={cx("menu-btn")}>
-              <FontAwesomeIcon icon={faEllipsisVertical} />
-            </button>
+          {CurrentUser ? (
+            <>
+              <Tippy delay={200} placement="bottom" content="Upload video">
+                <button className={cx("actions-btn")}>
+                  <FontAwesomeIcon icon={faCloudArrowUp} />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button text>Register</Button>
+              <Button primary>Login</Button>
+            </>
+          )}
+          <Menu
+            items={CurrentUser ? userMenu : Menu_Items}
+            onChange={handleMenuChange}
+          >
+            {CurrentUser ? (
+              <img
+                className={cx("User_Avatar")}
+                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7cf5cce03b212d6183967a227330fd1e~c5_100x100.jpeg?x-expires=1661850000&x-signature=6lNlc5hE1LmSUa22jU%2FYsS2DIrg%3D"
+                alt="User Name"
+              />
+            ) : (
+              <button className={cx("menu-btn")}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            )}
           </Menu>
         </div>
       </div>

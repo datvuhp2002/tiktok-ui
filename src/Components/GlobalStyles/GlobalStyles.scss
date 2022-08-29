@@ -5,7 +5,7 @@
     --primary:  rgba(254, 44, 85, 1.0);
     --white: #fff;
     --black: #000;
-    --text-collor: #333;
+    --text-collor: #161823;
     //Default Layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
@@ -36,4 +36,26 @@ button, input, [tabindex]{
 a[href]{
     color: var(--text-collor);
     text-decoration: none;
+}
+body{
+
+    .tippy-arrow{
+        color: #545454EB; 
+    }
+    .tippy-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3.8rem;
+        padding: 8px;
+        border-radius: 8px;
+        color: #fff;
+        background-color: #545454EB;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    
+    .tippy-content {
+        padding: 8px 9px;
+    }
 }
