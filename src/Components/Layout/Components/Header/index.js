@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
+import Image from "../../Image";
 import images from "../../../../assets/images";
 import Button from "../Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +20,7 @@ import {
   faCoins,
   faGear,
   faArrowRightFromBracket,
+  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { Wrapper as PopperWrapper } from "../../Popper";
 import AccountItem from "../AccountItem";
@@ -26,6 +28,7 @@ import Menu from "../../Popper/MenuItem";
 import HeadLess from "@tippyjs/react/headless";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import { MessagesIcon, NoticedIcon, UploadIcon } from "../Icons";
 
 const cx = classNames.bind(styles);
 
@@ -46,7 +49,7 @@ const Menu_Items = [
     },
   },
   {
-    icon: <FontAwesomeIcon icon={faQuestion} />,
+    icon: <FontAwesomeIcon icon={faQuestionCircle} />,
     title: "Feedback and Help",
     to: "/feedback",
   },
@@ -130,7 +133,20 @@ export default function Header() {
             <>
               <Tippy delay={200} placement="bottom" content="Upload video">
                 <button className={cx("actions-btn")}>
-                  <FontAwesomeIcon icon={faCloudArrowUp} />
+                  {/* <FontAwesomeIcon icon={faCloudArrowUp} /> */}
+                  <UploadIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={200} placement="bottom" content="Messages">
+                <button className={cx("actions-btn")}>
+                  {/* <FontAwesomeIcon icon={faCloudArrowUp} /> */}
+                  <MessagesIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={200} placement="bottom" content="Inbox">
+                <button className={cx("actions-btn")}>
+                  {/* <FontAwesomeIcon icon={faCloudArrowUp} /> */}
+                  <NoticedIcon />
                 </button>
               </Tippy>
             </>
@@ -145,7 +161,7 @@ export default function Header() {
             onChange={handleMenuChange}
           >
             {CurrentUser ? (
-              <img
+              <Image
                 className={cx("User_Avatar")}
                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/7cf5cce03b212d6183967a227330fd1e~c5_100x100.jpeg?x-expires=1661850000&x-signature=6lNlc5hE1LmSUa22jU%2FYsS2DIrg%3D"
                 alt="User Name"
